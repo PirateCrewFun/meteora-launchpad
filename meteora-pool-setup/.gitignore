@@ -1,0 +1,24 @@
+
+.anchor
+.DS_Store
+target
+**/*.rs.bk
+node_modules
+test-ledger
+.pnpm-debug.log
+.idea
+
+ts-client/dist/
+ts-client/package-lock.json
+
+ts-client/.env
+
+commands
+
+# Keypair
+keypair.json
+keypair.*.json
+.env
+
+prod_config
+prod_config/**
