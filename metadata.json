@@ -1,0 +1,30 @@
+{
+  "name": "Fake Token",
+  "symbol": "FAKE",
+  "description": "This is a fake token for testing purposes on devnet.",
+  "image": "https://gold-bitter-guan-406.mypinata.cloud/ipfs/bafkreihzgg23yjlzurcymwros3cjni6szmizmn2k5usmzq7xsbeuevqx64",
+  "seller_fee_basis_points": 0,
+  "attributes": [
+    { "trait_type": "Use", "value": "Test" },
+    { "trait_type": "Network", "value": "Solana Devnet" }
+  ],
+  "collection": {
+    "name": "Fake Token Collection",
+    "family": "Fake Coin Series"
+  },
+  "properties": {
+    "files": [
+      {
+        "uri": "https://gold-bitter-guan-406.mypinata.cloud/ipfs/bafkreihzgg23yjlzurcymwros3cjni6szmizmn2k5usmzq7xsbeuevqx64",
+        "type": "image/png"
+      }
+    ],
+    "category": "image",
+    "creators": [
+      {
+        "address": "E6UcK3dSFc2yaFtEb35pc1WsBVcrPhEbnB87YoNDXhqy",
+        "share": 100
+      }
+    ]
+  }
+}
