@@ -1,5 +1,6 @@
 {
   "name": "gold-launch",
+  "type": "module",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -19,6 +20,7 @@
     "@solana/web3.js": "^1.98.2",
     "bn.js": "^5.2.2",
     "dotenv": "^16.5.0",
+    "gill": "^0.10.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },

@@ -1,45 +1,65 @@
 import {
-  Connection,
-  Keypair,
-  clusterApiUrl,
-  PublicKey
-} from "@solana/web3.js";
-import { mintTo } from "@solana/spl-token";
+  getExplorerLink,
+  createSolanaClient,
+  getSignatureFromTransaction,
+  signTransactionMessageWithSigners,
+  address,
+} from "gill";
+import type { SolanaClusterMoniker } from "gill";
+import { loadKeypairSignerFromFile } from "gill/node";
+import {
+  buildMintTokensTransaction,
+  TOKEN_PROGRAM_ADDRESS,
+} from "gill/programs/token";
 import fs from "fs";
-import os from "os";
 import path from "path";
 
-const keypairPath = path.join(os.homedir(), ".config", "solana", "id.json");
-const payer = Keypair.fromSecretKey(
-  Uint8Array.from(JSON.parse(fs.readFileSync(keypairPath, "utf-8")))
-);
-const { mint, tokenAccount } = JSON.parse(fs.readFileSync("mint.json", "utf-8"));
+async function main() {
+  const signer = await loadKeypairSignerFromFile();
+  const cluster: SolanaClusterMoniker = "devnet";
 
-const tokensToMint = BigInt(100_000_000_000); // 100 billion tokens
-const decimals = BigInt(6);
-const amount = tokensToMint * (BigInt(10) ** decimals);
+  const { rpc, sendAndConfirmTransaction } = createSolanaClient({
+    urlOrMoniker: cluster,
+  });
 
-console.log("Tokens to mint:", tokensToMint.toString());
-console.log("Amount (raw units):", amount.toString());
-console.log("Expected result: 100,000,000,000 tokens");
+  const { value: latestBlockhash } = await rpc.getLatestBlockhash().send();
 
-(async () => {
-  try {
-    const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+  const __dirname = path.dirname(new URL(import.meta.url).pathname);
+  const mintPath = path.resolve(__dirname, "mint.json");
 
-    const sig = await mintTo(
-      connection,
-      payer,
-      new PublicKey(mint),
-      new PublicKey(tokenAccount),
-      payer,
-      amount
-    );
+  const { mintAddress, recipientAddress } = JSON.parse(
+    fs.readFileSync(mintPath, "utf-8")
+  );
 
-    console.log("Minted Signature:", sig);
-    console.log("Successfully minted 100 billion tokens!");
+  const mint = address(mintAddress);
+  const destination = address(recipientAddress);
 
-  } catch (error: any) {
-    console.error("❌ Error minting tokens:", error.message);
-  }
-})();
+  const tokensToMint = BigInt(100_000_000_000); // 100B
+  const decimals = BigInt(6);
+  const amount = tokensToMint * (BigInt(10) ** decimals);
+
+  const mintTokensTx = await buildMintTokensTransaction({
+    feePayer: signer,
+    latestBlockhash,
+    mint,
+    mintAuthority: signer,
+    amount,
+    destination,
+    tokenProgram: TOKEN_PROGRAM_ADDRESS,
+  });
+
+  const signedTx = await signTransactionMessageWithSigners(mintTokensTx);
+  const signature = getSignatureFromTransaction(signedTx);
+
+  console.log("Mint tokens tx signature:", signature);
+  console.log("Explorer link:", getExplorerLink({ cluster, transaction: signature }));
+
+  await sendAndConfirmTransaction(signedTx);
+  console.log("Minted 100B tokens to recipient.");
+}
+
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
+
