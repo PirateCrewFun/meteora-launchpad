@@ -19,10 +19,9 @@ const main = async () => {
   const POOL_ADDRESS = new PublicKey(process.env.POOL_ADDRESS!);
   console.log("pool ka address", POOL_ADDRESS);
 
-  const GOLD_MINT = new PublicKey(process.env.GOLD_MINT!);
-  console.log("gold mint ka address", GOLD_MINT);
+  const FAKE_MINT = new PublicKey(process.env.FAKE_MINT!);
 
-  const goldMint = await getMint(connection, GOLD_MINT);
+  const goldMint = await getMint(connection, FAKE_MINT);
 
   const dlmmPool = await DLMM.create(connection, POOL_ADDRESS);
   const activeBin = await dlmmPool.getActiveBin();
@@ -31,7 +30,7 @@ const main = async () => {
   const minBinId = activeBin.binId;
   const maxBinId = activeBin.binId + TOTAL_RANGE_INTERVAL * 2;
 
-  const totalXAmount = new BN(1000 * 10 ** goldMint.decimals);
+  const totalXAmount = new BN(2000000000 * 10 ** goldMint.decimals);
   const totalYAmount = new BN(0);
 
   const newPosition = new Keypair();

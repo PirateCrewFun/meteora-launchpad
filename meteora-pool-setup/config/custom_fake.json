@@ -3,25 +3,31 @@
     "dryRun": false,
     "keypairFilePath": "/home/maz/.config/solana/id.json",
     "computeUnitPriceMicroLamports": 100000,
-    "baseMint": "GcyzM7RU1y6Gd3gBrhCLnyqn2sRtVEV1SqfU85bzsKoW",
+    "baseMint": "2BtGnsHwYvBiXJmzce1eTUsjAFdz3eeZcLUD8xy1tyej",
     "quoteSymbol": "SOL",
     "dynamicAmmV2": {
         "creator": "E6UcK3dSFc2yaFtEb35pc1WsBVcrPhEbnB87YoNDXhqy",
-        "baseAmount": 5000000000,
+        "baseAmount": 50000000000,
         "quoteAmount": null,
         "initPrice": 0.000006394270733422854,
         "maxPrice":  0.00006394270733422854,
         "poolFees": {
-            "maxBaseFeeBps": 9999,
+            "maxBaseFeeBps": 5000,
             "minBaseFeeBps": 100,
             "numberOfPeriod": 1,
             "totalDuration": 86400,
             "feeSchedulerMode": 0,
             "useDynamicFee": true,
-            "dynamicFeeConfig": null
+             "dynamicFeeConfig": {
+                "filterPeriod": 10,
+                "decayPeriod": 120,
+                "reductionFactor": 5000,
+                "variableFeeControl": 14460000,
+                "maxVolatilityAccumulator": 239
+            }            
         },
         "hasAlphaVault": false,
-        "collectFeeMode": 0,
+        "collectFeeMode": 1,
         "activationType": "timestamp",
         "activationPoint": null
     }

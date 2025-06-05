@@ -1,18 +1,18 @@
 {
   "rpcUrl": "https://api.devnet.solana.com",
   "dryRun": false,
-  "keypairFilePath": "$HOME/.config/solana/id.json",
+  "keypairFilePath": "/home/maz/.config/solana/id.json",
   "computeUnitPriceMicroLamports": 100000,
-  "baseMint": "7vSNG2VN7TKmgEPFdZghCtYervNe9MtF9cn4n2WvaH4h",
+  "baseMint": "GcyzM7RU1y6Gd3gBrhCLnyqn2sRtVEV1SqfU85bzsKoW",
   "quoteSymbol": "SOL",
   "dlmm": {
-    "binStep": 400,
-    "feeBps": 200,
-    "initialPrice": 0.0000017,
+    "binStep": 100,
+    "feeBps": 30,
+    "initialPrice": 0.000006394270733422854,
     "activationType": "slot",
     "activationPoint": null,
     "priceRounding": "up",
     "hasAlphaVault": false,
-    "creatorPoolOnOffControl": false
+    "creatorPoolOnOffControl": true 
   }
 }

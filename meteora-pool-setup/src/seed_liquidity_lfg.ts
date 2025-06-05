@@ -93,7 +93,7 @@ async function main() {
 	}
 
 	const pair = await DLMM.create(connection, poolKey, {
-		cluster: "mainnet-beta"
+		cluster: "devnet"
 	})
 	await pair.refetchStates()
 
