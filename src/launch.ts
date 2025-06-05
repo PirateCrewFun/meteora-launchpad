@@ -25,31 +25,33 @@ const main = async () => {
 
   const dlmmPool = await DLMM.create(connection, POOL_ADDRESS);
   const activeBin = await dlmmPool.getActiveBin();
+  const activeBinPriceLamport = activeBin.price;
+  const activeBinPricePerToken = dlmmPool.fromPricePerLamport(
+    Number(activeBin.price)
+  );
+  const TOTAL_RANGE_INTERVAL = 10; // 10 bins on each side of the active bin
+  const minBinId = activeBin.binId - TOTAL_RANGE_INTERVAL;
+  const maxBinId = activeBin.binId + TOTAL_RANGE_INTERVAL;
 
-  const TOTAL_RANGE_INTERVAL = 10;
-  const minBinId = activeBin.binId;
-  const maxBinId = activeBin.binId + TOTAL_RANGE_INTERVAL * 2;
+  const totalXAmount = new BN(10_000_000_000).mul(new BN(10).pow(new BN(goldMint.decimals))); // 10B tokens
+  const totalYAmount = new BN(3_000_000_000); // 3 SOL
+  const newImbalancePosition = new Keypair();
 
-  const totalXAmount = new BN(2000000000 * 10 ** goldMint.decimals);
-  const totalYAmount = new BN(0);
-
-  const newPosition = new Keypair();
-
-  const tx = await dlmmPool.initializePositionAndAddLiquidityByStrategy({
-    positionPubKey: newPosition.publicKey,
-    user: user.publicKey,
-    totalXAmount,
-    totalYAmount,
-    strategy: {
-      minBinId,
-      maxBinId,
-      strategyType: StrategyType.Spot,
-    },
-  });
-
-  const txSig = await sendAndConfirmTransaction(connection, tx, [
+  const createPositionTx =
+    await dlmmPool.initializePositionAndAddLiquidityByStrategy({
+      positionPubKey: newImbalancePosition.publicKey,
+      user: user.publicKey,
+      totalXAmount,
+      totalYAmount,
+      strategy: {
+        maxBinId,
+        minBinId,
+        strategyType: StrategyType.Spot, // can be StrategyType.Spot, StrategyType.BidAsk, StrategyType.Curve
+      },
+    });
+  const txSig = await sendAndConfirmTransaction(connection, createPositionTx, [
     user,
-    newPosition,
+    newImbalancePosition,
   ]);
 
   console.log(`$GOLD single-sided position created! Tx: ${txSig}`);

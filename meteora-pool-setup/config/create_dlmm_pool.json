@@ -3,7 +3,7 @@
   "dryRun": false,
   "keypairFilePath": "/home/maz/.config/solana/id.json",
   "computeUnitPriceMicroLamports": 100000,
-  "baseMint": "GcyzM7RU1y6Gd3gBrhCLnyqn2sRtVEV1SqfU85bzsKoW",
+  "baseMint": "4nuL4gPTn4cCThkiFsA6EGHysq21GWPebmXa5Hm2cmqQ",
   "quoteSymbol": "SOL",
   "dlmm": {
     "binStep": 100,

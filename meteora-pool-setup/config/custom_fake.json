@@ -3,12 +3,12 @@
     "dryRun": false,
     "keypairFilePath": "/home/maz/.config/solana/id.json",
     "computeUnitPriceMicroLamports": 100000,
-    "baseMint": "2BtGnsHwYvBiXJmzce1eTUsjAFdz3eeZcLUD8xy1tyej",
+    "baseMint": "CmNSgFnXM8Xghd7gWub7NaYaGmPJWcoC4JTTvH2UjE6S",
     "quoteSymbol": "SOL",
     "dynamicAmmV2": {
         "creator": "E6UcK3dSFc2yaFtEb35pc1WsBVcrPhEbnB87YoNDXhqy",
-        "baseAmount": 50000000000,
-        "quoteAmount": null,
+        "baseAmount": 10000000000,
+        "quoteAmount": 3,
         "initPrice": 0.000006394270733422854,
         "maxPrice":  0.00006394270733422854,
         "poolFees": {

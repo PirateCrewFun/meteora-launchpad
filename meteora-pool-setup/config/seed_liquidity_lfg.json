@@ -3,18 +3,20 @@
   "dryRun": true,
   "keypairFilePath": "/home/maz/.config/solana/id.json",
   "computeUnitPriceMicroLamports": 100000,
-  "baseMint": "GcyzM7RU1y6Gd3gBrhCLnyqn2sRtVEV1SqfU85bzsKoW",
+  "baseMint": "Dzrq3Wno3Fr3spdHxSWSyfy8bgGHX47nscs696vkgLZH",
   "quoteSymbol": "SOL",
+  "poolAddress": "CzKyHqr8KfFbRYqXqewGPonuAsqELeTddPrf3c57UDQs",
   "lfgSeedLiquidity": {
     "minPrice": 0.000006408613176108691,
     "maxPrice": 0.0000640861317610869,
-    "seedAmount": "1000000000",
+    "seedAmount": "10000000000",
     "curvature": 20,
     "basePositionKeypairFilepath": "/home/maz/.config/solana/id.json",
-    "operatorKeypairFilepath": "/home/maz/dev/gold-launch/fake-keypair.json",
+    "operatorKeypairFilepath": "/home/maz/.config/solana/id.json",
     "positionOwner": "E6UcK3dSFc2yaFtEb35pc1WsBVcrPhEbnB87YoNDXhqy",
     "feeOwner": "E6UcK3dSFc2yaFtEb35pc1WsBVcrPhEbnB87YoNDXhqy",
     "lockReleasePoint": 0,
     "seedTokenXToPositionOwner": true
   }
 }
+
