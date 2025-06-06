@@ -21,12 +21,12 @@ import {
   const POOL_CONFIG = {
     keypairPath: "/home/maz/.config/solana/id.json",
     rpcUrl: clusterApiUrl("devnet"),
-    tokenAMint: new PublicKey("F2NsQGShJGVrK5v18VutS25W8CUYDEMCHGGxhxFbJ4an"),
+    tokenAMint: new PublicKey("GioLxPyAmjEcNs6az5cYoRbC9nF6YQZTQBHYNAvmnsi2"),
     tokenBMint: NATIVE_MINT,
     tokenADecimals: 6,
     tokenBDecimals: 9,
     maxTokenAAmount: 50_000_000_000,
-    maxTokenBAmount: 0.0001, // SOL
+    maxTokenBAmount: 0, // SOL
     initialPrice: 0.000006394270733422854,// 1 base token = 1 quote token
     maxBaseFeeBps: 5000, // 50%
     minBaseFeeBps: 100, // 0.25%

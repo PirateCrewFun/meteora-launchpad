@@ -3,7 +3,7 @@
     "dryRun": false,
     "keypairFilePath": "/home/maz/.config/solana/id.json",
     "computeUnitPriceMicroLamports": 100000,
-    "baseMint": "GcyzM7RU1y6Gd3gBrhCLnyqn2sRtVEV1SqfU85bzsKoW",
+    "baseMint": "F1RW4FZFxBPV4oPsEVMhfvq42VYe3MiM3m6ftLqvQTqo",
     "quoteSymbol": "SOL",
     "dynamicAmmV2": {
         "creator": "E6UcK3dSFc2yaFtEb35pc1WsBVcrPhEbnB87YoNDXhqy",
@@ -12,7 +12,7 @@
         "initPrice": 0.000006394270733422854,
         "maxPrice":  0.00006394270733422854,
         "poolFees": {
-            "maxBaseFeeBps": 9999,
+            "maxBaseFeeBps": 5000,
             "minBaseFeeBps": 100,
             "numberOfPeriod": 1,
             "totalDuration": 86400,
