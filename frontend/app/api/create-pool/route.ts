@@ -1,6 +1,6 @@
 
 import { NextRequest, NextResponse } from "next/server";
-import { writeFileSync, mkdirSync, existsSync } from "fs";
+import { writeFileSync } from "fs";
 import { spawn } from "child_process";
 import path from "path";
 import { Buffer } from "buffer";
@@ -8,14 +8,9 @@ import { Buffer } from "buffer";
 export async function POST(req: NextRequest): Promise<Response> {
   const body = await req.json();
 
-  const baseDir = process.cwd();
-  const configDir = path.join(baseDir, "config");
-  const secretsDir = path.join(baseDir, "secrets");
-  const configPath = path.join(configDir, "temp-config.json");
-  const keypairPath = path.join(secretsDir, "id.json");
-
-  if (!existsSync(configDir)) mkdirSync(configDir, { recursive: true });
-  if (!existsSync(secretsDir)) mkdirSync(secretsDir, { recursive: true });
+  const tempDir = "/tmp";
+  const configPath = path.join(tempDir, "temp-config.json");
+  const keypairPath = path.join(tempDir, "id.json");
 
   const keypairBase64 = process.env.KEYPAIR_B64;
   if (!keypairBase64) {
@@ -28,6 +23,7 @@ export async function POST(req: NextRequest): Promise<Response> {
   const fullConfig = { ...body, keypairFilePath: keypairPath };
   writeFileSync(configPath, JSON.stringify(fullConfig, null, 2));
 
+  const baseDir = process.cwd();
   const scriptPath = path.join(baseDir, "meteora-pool-setup/src/create_damm_v2_customizable_pool.ts");
 
   const response: Response = await new Promise((resolve) => {
@@ -50,3 +46,4 @@ export async function POST(req: NextRequest): Promise<Response> {
 
   return response;
 }
+
