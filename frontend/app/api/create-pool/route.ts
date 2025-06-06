@@ -27,7 +27,7 @@ export async function POST(req: NextRequest): Promise<Response> {
   const scriptPath = path.join(baseDir, "meteora-pool-setup/src/create_damm_v2_customizable_pool.ts");
 
   const response: Response = await new Promise((resolve) => {
-    const bunProcess = spawn("bun", ["run", scriptPath, "--config", configPath]);
+    const bunProcess = spawn("npx", ["ts-node", scriptPath, "--config", configPath]);
 
     let output = "";
 
