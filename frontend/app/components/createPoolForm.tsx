@@ -1,11 +1,14 @@
 "use client";
 import { useState } from "react";
+// import { Keypair } from "@solana/web3.js";
+
+// const secret = process.env.SECRET_KEYPAIR;
+// const keypair = Keypair.fromSecretKey(Uint8Array.from(JSON.parse(secret!)));
 
 export default function CreatePoolForm() {
   const [form, setForm] = useState({
     rpcUrl: "https://api.devnet.solana.com",
     dryRun: false,
-    keypairFilePath: "/home/maz/.config/solana/id.json",
     computeUnitPriceMicroLamports: 100000,
     baseMint: "",
     quoteSymbol: "SOL",
@@ -72,15 +75,6 @@ export default function CreatePoolForm() {
           type="checkbox"
           checked={form.dryRun}
           onChange={(e) => handleChange("dryRun", e.target.checked)}
-        />
-      </label>
-
-      <label className="block">
-        Keypair File Path
-        <input
-          className="border p-2 w-full"
-          value={form.keypairFilePath}
-          onChange={(e) => handleChange("keypairFilePath", e.target.value)}
         />
       </label>
 

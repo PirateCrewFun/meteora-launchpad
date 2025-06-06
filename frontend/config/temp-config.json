@@ -1,9 +1,8 @@
 {
   "rpcUrl": "https://api.devnet.solana.com",
   "dryRun": false,
-  "keypairFilePath": "/home/maz/.config/solana/id.json",
   "computeUnitPriceMicroLamports": 100000,
-  "baseMint": "29da1AzNSfZnWe8tbXP1FfkBaoQJxqfRd1xh4JtLnWd7",
+  "baseMint": "FLsx7B3pHaMFyBZv1LwWPUr9N1HsFW6angsp2g2vF6mu",
   "quoteSymbol": "SOL",
   "dynamicAmmV2": {
     "creator": "E6UcK3dSFc2yaFtEb35pc1WsBVcrPhEbnB87YoNDXhqy",
@@ -24,5 +23,6 @@
     "collectFeeMode": 0,
     "activationType": "timestamp",
     "activationPoint": null
-  }
+  },
+  "keypairFilePath": "/home/maz/dev/gold-launch/frontend/secrets/id.json"
 }

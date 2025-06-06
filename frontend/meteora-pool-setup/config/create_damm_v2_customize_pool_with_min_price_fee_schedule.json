@@ -1,4 +1,4 @@
-{
+{min_price
     "rpcUrl": "https://api.devnet.solana.com",
     "dryRun": true,
     "keypairFilePath": "id.json",
